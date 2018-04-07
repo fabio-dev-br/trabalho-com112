@@ -34,6 +34,9 @@
 		<Unit filename="com112_main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="com112_sort.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
