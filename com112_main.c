@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "com112_file.h"
+#include "com112_sort.h"
 
 int menu()
 {
     int operacao;
+
+    /*-----MENU-----*/
+
     printf("MENU:\n");
     printf("1. Bubble Sort\n");
     printf("2. Selection Sort\n");
@@ -45,7 +50,7 @@ int menu()
         system("cls");
         break;
 
-    case 5://QUICK
+    case 5://QUICK1
         system("cls");
 
         system("pause");
@@ -64,7 +69,42 @@ int menu()
 }
 int main()
 {
-    int op;
+    int op, qtdNumeros;
+    /*-----CRIAR ARQUIVOS-----*/
+
+    FILE *arqEntrada;
+    arqEntrada = fopen("com112_entrada.txt", "w+");
+
+    FILE *arqSaida;
+    arqSaida = fopen("com112_saida.txt", "w+");
+
+    FILE *arqRelatorio;
+    arqRelatorio = fopen("com112_relatorio.txt", "w+");
+
+    /*-----DEFINE VETOR e TAMANHO-----*/
+
+    printf("Digite a quantidade numeros do vetor\n");
+    scanf("%d",&qtdNumeros);
+    system("cls");
+
+    int vetor[qtdNumeros+2];
+
+    /*-----ESCREVE QUANTIDADE E NUMEROS NO ARQUVIOENTRADA-----*/
+
+    fprintf(arqEntrada, "%d\n",qtdNumeros);//Tamanho do vetor
+
+    srand(time(NULL));
+
+    for (int i=0; i<qtdNumeros; i++){//Numeros do vetor
+        vetor[i] = rand()%qtdNumeros*2;
+        fprintf(arqEntrada, "%d ",vetor[i]);
+    }
+
+    fclose(arqEntrada);
+
+
+    /*-----EXECUTA MENU-----*/
+
     do
     {
         op=menu();

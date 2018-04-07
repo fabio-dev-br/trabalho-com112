@@ -31,9 +31,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="com112_file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="com112_file.h" />
 		<Unit filename="com112_main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="com112_sort.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="com112_sort.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
