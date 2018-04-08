@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="com112_entrada.txt" />
 		<Unit filename="com112_file.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -38,13 +39,12 @@
 		<Unit filename="com112_main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="com112_relatorio.txt" />
+		<Unit filename="com112_saida.txt" />
 		<Unit filename="com112_sort.c">
 			<Option compilerVar="CC" />
 		</Unit>
-<<<<<<< HEAD
 		<Unit filename="com112_sort.h" />
-=======
->>>>>>> db5699a327b99172ea646c1390f6a669453d0dd9
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -19,57 +19,13 @@ int menu()
     printf("Opcao: ");
     scanf("%d",&operacao);
 
-    switch (operacao)
-    {
 
-    case 1://BUBBLE
-        system("cls");
-
-        system("pause");
-        system("cls");
-        break;
-
-    case 2://SELECTION
-        system("cls");
-
-        system("pause");
-        system("cls");
-        break;
-
-    case 3://INSERTION
-        system("cls");
-
-        system("pause");
-        system("cls");
-        break;
-
-    case 4://MERGE
-        system("cls");
-
-        system("pause");
-        system("cls");
-        break;
-
-    case 5://QUICK1
-        system("cls");
-
-        system("pause");
-        system("cls");
-        break;
-
-    case 6:
-        return 0;
-
-    default:
-        printf("Numero invalido!\n");
-        system("pause");
-        system("cls");
-    }
     return operacao;
 }
 int main()
 {
-    int op, qtdNumeros;
+    int op, qtdNumeros, movimentacoes=0, comparacoes=0;
+
     /*-----CRIAR ARQUIVOS-----*/
 
     FILE *arqEntrada;
@@ -87,20 +43,10 @@ int main()
     scanf("%d",&qtdNumeros);
     system("cls");
 
-    int vetor[qtdNumeros+2];
 
-    /*-----ESCREVE QUANTIDADE E NUMEROS NO ARQUVIOENTRADA-----*/
+    /*-----ESCREVE QUANTIDADE E NUMEROS NO ARQUVIO ENTRADA-----*/
 
-    fprintf(arqEntrada, "%d\n",qtdNumeros);//Tamanho do vetor
-
-    srand(time(NULL));
-
-    for (int i=0; i<qtdNumeros; i++){//Numeros do vetor
-        vetor[i] = rand()%qtdNumeros*2;
-        fprintf(arqEntrada, "%d ",vetor[i]);
-    }
-
-    fclose(arqEntrada);
+    escreverArquivo(arqEntrada,qtdNumeros);
 
 
     /*-----EXECUTA MENU-----*/
@@ -108,6 +54,74 @@ int main()
     do
     {
         op=menu();
+
+        /*-----LE ARQUIVO E PASSA PARA VETOR------*/
+
+        int vetor[qtdNumeros];
+        lerArquivo(&vetor);
+
+
+        switch (op)
+        {
+
+        case 1://BUBBLE
+            system("cls");
+            for(int i=0; i<qtdNumeros; i++)
+            {
+                printf("%d ", vetor[i]);
+            }
+            printf("\n");
+
+            bubbleSort(vetor,qtdNumeros,movimentacoes,comparacoes);
+
+            for(int i=0; i<qtdNumeros; i++)
+            {
+                printf("%d ", vetor[i]);
+            }
+            printf("\n");
+
+            printf("Movimentacoes: %d Comparacoes %d\n", movimentacoes, comparacoes);
+
+            system("pause");
+            system("cls");
+            break;
+
+        case 2://SELECTION
+            system("cls");
+
+            system("pause");
+            system("cls");
+            break;
+
+        case 3://INSERTION
+            system("cls");
+
+            system("pause");
+            system("cls");
+            break;
+
+        case 4://MERGE
+            system("cls");
+
+            system("pause");
+            system("cls");
+            break;
+
+        case 5://QUICK1
+            system("cls");
+
+            system("pause");
+            system("cls");
+            break;
+
+        case 6:
+            return 0;
+
+        default:
+            printf("Numero invalido!\n");
+            system("pause");
+            system("cls");
+        }
     }
     while(op!=0);
 

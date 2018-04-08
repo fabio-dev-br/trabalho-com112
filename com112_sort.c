@@ -1,149 +1,115 @@
-//Bubble Sort
-void bubblesort( int vetorDesordenado[], int tamanhoVetor){
-    int x;
-    int troca;
-    int aux;
+#include <stdio.h>
+#include <stdlib.h>
 
- while (x<=tamanhoVetor  && troca==1)
-    {
-        troca=0;
-        for(i=0; ( tamanhoVetor - 1 ) i++)
-        {
-            if(v[i].salario<v[i+1].salario)
-            {
-                troca=1;
-                aux = v[i];
-                v[i]=v[i+1];
-                v[i+1]= aux;
+/*-----Bubble Sort-----*/
+void bubbleSort(int vetor[], int tamanho, int movimentacoes, int comparacoes) {
+    double aux;
+
+    for (int j = 0; j < tamanho; j++) {
+        for (int i = 0; i < tamanho-1; i++) {
+            comparacoes++;
+            if (vetor[i] > vetor[i + 1]) {
+                aux = vetor[i];
+                vetor[i] = vetor[i + 1];
+                vetor[i + 1] = aux;
+                movimentacoes++;
             }
         }
-        x=x+1;
+    }
+
+    printf("%d %d\n", movimentacoes, comparacoes);
+
+}
+
+/*-----SELECTION-----*/
+void selectionSort(int vetor[], int tamanho, int movimentacoes, int comparacoes) {
+    int i, j, posicaoValorMinimo;
+
+    for (i = 0; i < (tamanho - 1); i++) {
+        posicaoValorMinimo = i;
+        for (j = (i + 1); j < tamanho; j++) {
+            if (vetor[j] < vetor[posicaoValorMinimo]) {
+                posicaoValorMinimo = j;
+            }
+        }
+
+        if (i != posicaoValorMinimo) {
+            trocarPosicaoValores(&vetor[i], &vetor[posicaoValorMinimo]);
+        }
     }
 }
 
-
-//Selection Sort
-
-void selectionSort( int vetorDesordenado[], int tamanhoVetor )
-{
-   int i, j, posicaoValorMinimo;
-
-   for (i = 0; i < ( tamanhoVetor - 1 ); i++)
-   {
-      posicaoValorMinimo = i;
-      for (j = ( i + 1 ); j < tamanhoVetor; j++)
-      {
-         if( vetorDesordenado[j] < vetorDesordenado[posicaoValorMinimo] )
-         {
-           posicaoValorMinimo = j;
-         }
-       }
-
-       if ( i != posicaoValorMinimo )
-       {
-          trocarPosicaoValores( &vetorDesordenado[i], &vetorDesordenado[posicaoValorMinimo] );
-       }
-   }
+void trocarPosicaoValores(int *posicaoA, int *posicaoB) {
+    int temporario;
+    temporario = *posicaoA;
+    *posicaoA = *posicaoB;
+    *posicaoB = temporario;
 }
 
-void trocarPosicaoValores( int *posicaoA, int *posicaoB )
-{
-   int temporario;
-   temporario = *posicaoA;
-   *posicaoA = *posicaoB;
-   *posicaoB = temporario;
+/*-----INSERTION-----*/
+void insertionSort(int vetor[], int tamanho, int movimentacoes, int comparacoes) {
+    int i, j, valorAtual;
+
+    for (j = 1; j < tamanho; j++) {
+        valorAtual = vetor[j];
+        i = j - 1;
+
+        while (i >= 0 && vetor[i] > valorAtual) {
+            vetor[i + 1] = vetor[i];
+            i--;
+        }
+
+        vetor[i + 1] = valorAtual;
+    }
 }
 
+/*-----MERGE-----*/
+void mergeSort(int *vetor, int posicaoInicio, int posicaoFim) {
+    int i, j, k, metadeTamanho, *vetorTemp;
+    if (posicaoInicio == posicaoFim) return;
 
+    // ordenacao recursiva das duas metades
+    metadeTamanho = (posicaoInicio + posicaoFim) / 2;
+    mergeSort(vetor, posicaoInicio, metadeTamanho);
+    mergeSort(vetor, metadeTamanho + 1, posicaoFim);
 
+    // intercalacao no vetor temporario t
+    i = posicaoInicio;
+    j = metadeTamanho + 1;
+    k = 0;
+    vetorTemp = (int *) malloc(sizeof (int) * (posicaoFim - posicaoInicio + 1));
 
-
-//Insertion Sort
-void insertionSort(int vetorDesordenado[], int tamanhoVetor )
-{
-   int i, j, valorAtual;
-
-   for( j=1; j < tamanhoVetor; j++ )
-   {
-      valorAtual = vetorDesordenado[j];
-      i = j-1;
-
-      while(i >= 0 && vetorDesordenado[i] > valorAtual)
-      {
-        vetorDesordenado[i+1] = vetorDesordenado[i];
-        i--;
-      }
-
-      vetorDesordenado[i+1] = valorAtual;
-   }
-}
-
-
-
-//Merge Sort
-
-void mergeSort( int *vetorDesorndeado, int posicaoInicio, int posicaoFim )
-{
-   int i,j,k,metadeTamanho,*vetorTemp;
-   if ( posicaoInicio == posicaoFim ) return;
-
-   // ordenacao recursiva das duas metades
-   metadeTamanho = ( posicaoInicio+posicaoFim )/2;
-   mergeSort( vetorDesorndeado, posicaoInicio, metadeTamanho);
-   mergeSort( vetorDesorndeado, metadeTamanho+1,posicaoFim );
-
-   // intercalacao no vetor temporario t
-   i = posicaoInicio;
-   j = metadeTamanho+1;
-   k = 0;
-   vetorTemp = (int *) malloc(sizeof(int) * (posicaoFim-posicaoInicio+1));
-
-   while( i < metadeTamanho+1 || j  < posicaoFim+1 )
-   {
-      if ( i == metadeTamanho+1 )
-      { // i passou do final da primeira metade, pegar v[j]
-         vetorTemp[k] = vetorDesorndeado[j];
-         j++;
-         k++;
-      }
-      else
-      {
-         if (j==posicaoFim+1)
-         {
-            // j passou do final da segunda metade, pegar v[i]
-            vetorTemp[k] = vetorDesorndeado[i];
-            i++;
+    while (i < metadeTamanho + 1 || j < posicaoFim + 1) {
+        if (i == metadeTamanho + 1) {
+            // i passou do final da primeira metade, pegar v[j]
+            vetorTemp[k] = vetor[j];
+            j++;
             k++;
-         }
-         else
-         {
-            if (vetorDesorndeado[i] < vetorDesorndeado[j])
-            {
-               vetorTemp[k] = vetorDesorndeado[i];
-               i++;
-               k++;
+        } else {
+            if (j == posicaoFim + 1) {
+                // j passou do final da segunda metade, pegar v[i]
+                vetorTemp[k] = vetor[i];
+                i++;
+                k++;
+            } else {
+                if (vetor[i] < vetor[j]) {
+                    vetorTemp[k] = vetor[i];
+                    i++;
+                    k++;
+                } else {
+                    vetorTemp[k] = vetor[j];
+                    j++;
+                    k++;
+                }
             }
-            else
-            {
-              vetorTemp[k] = vetorDesorndeado[j];
-              j++;
-              k++;
-            }
-         }
-      }
+        }
 
-   }
-   // copia vetor intercalado para o vetor original
-   for( i = posicaoInicio; i <= posicaoFim; i++ )
-   {
-      vetorDesorndeado[i] = vetorTemp[i-posicaoInicio];
-   }
-   free(vetorTemp);
+    }
+    // copia vetor intercalado para o vetor original
+    for (i = posicaoInicio; i <= posicaoFim; i++) {
+        vetor[i] = vetorTemp[i - posicaoInicio];
+    }
+    free(vetorTemp);
 }
 
-
-
-
-
-
-//Quick Sort
+/*-----QUICK-----*/

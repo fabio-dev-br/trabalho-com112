@@ -3,17 +3,21 @@
 	<stdio.h>
 	<stdlib.h>
 
-1523129271 source:c:\users\daniel\documents\trabalho-com112\com112_main.c
+1523141383 source:c:\users\daniel\documents\trabalho-com112\com112_main.c
 	<stdio.h>
 	<stdlib.h>
 	"com112_file.h"
 	"com112_sort.h"
 
-1523073670 source:c:\users\daniel\documents\trabalho-com112\com112_sort.c
+1523145084 source:c:\users\daniel\documents\trabalho-com112\com112_sort.c
+	<stdio.h>
+	<stdlib.h>
 
-1523126093 source:c:\users\daniel\documents\trabalho-com112\com112_file.c
+1523138719 source:c:\users\daniel\documents\trabalho-com112\com112_file.c
+	<stdio.h>
+	<stdlib.h>
 
 1523126129 c:\users\daniel\documents\trabalho-com112\com112_file.h
 
-1523073670 c:\users\daniel\documents\trabalho-com112\com112_sort.h
+1523141261 c:\users\daniel\documents\trabalho-com112\com112_sort.h
 
